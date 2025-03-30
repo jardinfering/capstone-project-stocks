@@ -12,6 +12,7 @@ from yfinance import Ticker
 from yfinance import ticker
 import datetime
 
+#pip install yfinance python-dateutil seaborn matplotlib
 
 def graphStock():
     stock_symbol = input("Ticker of Stock you have chosen: ")
