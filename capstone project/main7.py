@@ -11,6 +11,7 @@ from dateutil.relativedelta import *
 from yfinance import Ticker
 from yfinance import ticker
 import datetime
+import matplotlib.dates as mdates
 
 #pip install all packages needed
 
@@ -210,11 +211,16 @@ def multipleStock():
     start_date = input('Pick a start date (YYYY-MM-DD): ')
     end_date = input('Pick an end date (YYYY-MM-DD): ')
     for stock in stocks:
-        color = random.choice(["r", "b", "g", "y", "p", "o", "c", "m", "k"])
+        color = "#{:02x}{:02x}{:02x}".format(random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
         data = yf.Ticker(stock).history(start=start_date, end=end_date)
-        sns.set_style('whitegrid'); plt.style.use("fivethirtyeight")
+        sns.set_style('whitegrid')
+        plt.style.use("fivethirtyeight")
         plt.plot(data['Open'], color=color, label=stock)
-    plt.legend(); plt.show()
+    plt.legend()
+    plt.gca().xaxis.set_major_formatter(mdates.DateFormatter('%d %b %Y'))
+    plt.xticks(rotation=45, ha='right')
+    plt.tight_layout()  # Adjust layout to prevent clipping of labels
+    plt.show()
 
     def user_interaction():
         while True:
