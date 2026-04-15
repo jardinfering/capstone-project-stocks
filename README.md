@@ -1,2 +1,2 @@
-# capstone-project-stocks
-capstone
+# Capstone Project Stock Data Analysis
+
